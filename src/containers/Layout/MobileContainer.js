@@ -50,12 +50,18 @@ class MobileContainer extends Component {
                     >
                         Demo
                     </Menu.Item>
+                    <Menu.Item
+                        active={this.props.location.pathname === "/data"}
+                        onClick={() => this.props.history.push("/data")}
+                    >
+                        Dane
+                    </Menu.Item>
                     <Menu.Item position="right">
                         {isAuthenticated ? (
                             <React.Fragment>
                                 <Button inverted onClick={() => this.props.logout()}>
                                     Logout
-                </Button>
+                                </Button>
                                 <Button
                                     primary
                                     inverted
@@ -64,7 +70,7 @@ class MobileContainer extends Component {
                                     }
                                 >
                                     Account
-                </Button>
+                                </Button>
                             </React.Fragment>
                         ) : (
                             <React.Fragment>
@@ -73,14 +79,14 @@ class MobileContainer extends Component {
                                     onClick={() => this.props.history.push("/login")}
                                 >
                                     Login
-                </Button>
+                                </Button>
                                 <Button
                                     inverted
                                     style={{ marginLeft: "0.5em" }}
                                     onClick={() => this.props.history.push("/signup")}
                                 >
                                     Signup
-                </Button>
+                                </Button>
                             </React.Fragment>
                         )}
                     </Menu.Item>

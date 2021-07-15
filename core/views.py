@@ -7,7 +7,8 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
 from rest_framework.views import APIView
-
+import pandas as pd
+import json
 from .serializers import (
     ChangeEmailSerializer,
     ChangePasswordSerializer,
@@ -121,3 +122,13 @@ class FileUploadView(APIView):
             recognition = "Working properly"
             print(file_serializer)
         return Response(recognition, status=HTTP_200_OK)
+
+
+class ReadExcell(APIView):
+    permission_classes = (AllowAny, )
+
+    def get(self, request):
+        df = pd.read_excel('media/capex.xlsx')
+        df = df.head(5).to_json()
+        df = json.loads(df)
+        return Response(df)

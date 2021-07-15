@@ -9,7 +9,7 @@ import {
     Segment
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import AI from "../assets/images/ai.svg";
+import AI from "../assets/images/chart.png";
 
 const HomepageLayout = () => (
     <React.Fragment>
@@ -18,10 +18,10 @@ const HomepageLayout = () => (
                 <Grid.Row>
                     <Grid.Column width={8}>
                         <Header as="h3" style={{ fontSize: "2em" }}>
-                            Boilerplate React-Django
+                            Cash Forecasting Application
                         </Header>
                         <p style={{ fontSize: "1.33em" }}>
-                            Token Authentication is ready here
+                        Thank you for your careful data input
                         </p>
                     </Grid.Column>
                     <Grid.Column floated="right" width={6}>

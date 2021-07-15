@@ -56,8 +56,8 @@ class DesktopContainer extends Component {
                                     Demo
                                 </Menu.Item>
                                 <Menu.Item
-                                    active={this.props.location.pathname === "/dane"}
-                                    onClick={() => this.props.history.push("/dane")}
+                                    active={this.props.location.pathname === "/data"}
+                                    onClick={() => this.props.history.push("/data")}
                                 >
                                     Dane
                                 </Menu.Item>
@@ -71,6 +71,10 @@ class DesktopContainer extends Component {
                                                 Logout
                                             </Button>
                                             <Button
+                                            style={{
+                                                marginLeft: '5%'
+                                            }}
+                                            
                                                 primary
                                                 inverted
                                                 onClick={() =>
