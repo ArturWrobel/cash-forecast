@@ -77,7 +77,7 @@ class NormalLoginForm extends React.Component {
                 />
 
                 <Button
-                  color="primary"
+                  color="violet"
                   fluid
                   size="large"
                   disabled={loading}

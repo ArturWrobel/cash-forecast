@@ -1,10 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
+USER_PERMISSIONS = [
+   ( 'INPUT', "IN"),
+   ( 'ANALYSIS', "AN"),
+]
 
 class User(AbstractUser):
     is_member = models.BooleanField(default=False)
-    on_free_trial = models.BooleanField(default=True)
+    permissions = models.CharField(max_length=10, choices=USER_PERMISSIONS, default = 'INPUT')
 
 
 class File(models.Model):

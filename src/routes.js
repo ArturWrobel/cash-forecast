@@ -6,6 +6,7 @@ import Signup from "./containers/Signup";
 import LandingPage from "./containers/LandingPage";
 import Demo from "./containers/Demo";
 import Data from "./containers/Data";
+import Forecast from "./containers/Forecast";
 import ChangeEmail from "./containers/Account/ChangeEmail";
 import ChangePassword from "./containers/Account/ChangePassword";
 import APIKey from "./containers/Account/APIKey";
@@ -38,6 +39,7 @@ const BaseRouter = () => (
     <Route path="/signup" component={Signup} />
     <Route path="/demo" component={Demo} />
     <Route path="/data" component={Data} />
+    <Route path="/forecast" component={Forecast} />
     <PrivateRoute path="/account/change-email" component={ChangeEmail} />
     <PrivateRoute path="/account/change-password" component={ChangePassword} />
     <PrivateRoute path="/account/api-key" component={APIKey} />

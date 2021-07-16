@@ -120,12 +120,15 @@ class RegistrationForm extends React.Component {
                   onChange={this.handleChange}
                 />
                 <Button
-                  color="primary"
+                  color="violet"
                   fluid
                   size="large"
                   disabled={loading}
                   loading={loading}
                 >
+                  {/* "red","orange","yellow","olive","green","teal","blue","violet","purple",
+                  "pink","brown","grey","black","facebook","google plus","instagram",
+                  "linkedin","twitter","vk","youtube" */}
                   Signup
                 </Button>
               </Segment>

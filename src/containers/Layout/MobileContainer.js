@@ -56,6 +56,12 @@ class MobileContainer extends Component {
                     >
                         Dane
                     </Menu.Item>
+                    <Menu.Item
+                        active={this.props.location.pathname === "/forecast"}
+                        onClick={() => this.props.history.push("/forecast")}
+                    >
+                        Forecast
+                    </Menu.Item>
                     <Menu.Item position="right">
                         {isAuthenticated ? (
                             <React.Fragment>

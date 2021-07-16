@@ -17,6 +17,7 @@ export const changeEmailURL = `${APIEndpoint}/change-email/`;
 export const changePasswordURL = `${APIEndpoint}/change-password/`;
 export const APIkeyURL = `${APIEndpoint}/api-key/`;
 export const ExcelAPI = `${APIEndpoint}/data/`;
+export const ForecastAPI = `${APIEndpoint}/forecast/`;
 
 export const loginURL = `${host}/rest-auth/login/`;
 export const signupURL = `${host}/rest-auth/registration/`;
