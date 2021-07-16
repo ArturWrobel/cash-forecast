@@ -54,7 +54,7 @@ class MobileContainer extends Component {
                         active={this.props.location.pathname === "/data"}
                         onClick={() => this.props.history.push("/data")}
                     >
-                        Dane
+                        Data
                     </Menu.Item>
                     <Menu.Item
                         active={this.props.location.pathname === "/forecast"}

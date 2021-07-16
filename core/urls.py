@@ -6,7 +6,8 @@ from .views import (
     APIKeyView,
     FileUploadView,
     ReadExcell,
-    ForecastAPI
+    ForecastAPI,
+    PermissionsView
 )
 
 app_name = "core"
@@ -19,4 +20,5 @@ urlpatterns = [
     path('demo/', FileUploadView.as_view(), name='file-upload'),
     path('data/', ReadExcell.as_view(), name='excel-reader'),
     path('forecast/', ForecastAPI.as_view(), name='forecast'),
+    path('permit/', PermissionsView.as_view(), name='permit'),
 ]

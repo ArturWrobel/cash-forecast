@@ -50,6 +50,21 @@ class UserEmailView(APIView):
         return Response(obj)
 
 
+class PermissionsView(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request, *args, **kwargs):
+        user = get_user_from_token(request)
+
+        # xxx
+        print(user.date_joined, "date_joined")
+        print(user.permissions, "permissions")
+        # xxx
+
+        obj = {"permissions": user.permissions}
+        return Response(obj)
+
+
 class ChangeEmailView(APIView):
     permission_classes = (IsAuthenticated,)
 

@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import {
     Container,
     Segment,
 } from "semantic-ui-react";
 import { authAxios } from "../utils";
 import { ForecastAPI } from "../constants";
+import PermissionsContext from '../context/PermissionsContext';
 
 function Data() {
 
@@ -12,7 +13,9 @@ function Data() {
     const [data, setData] = useState({})
 
     const authenticated = localStorage.getItem("token") !== null;
-
+    const inputOnly = useContext(PermissionsContext)
+    console.log(typeof(inputOnly))
+    console.log(Object.entries(inputOnly)[0][1])
 
     useEffect(() => {
         setLoading(true);
@@ -61,8 +64,8 @@ function Data() {
                     </div> :
                         <Segment>
                             <Segment vertical>
-                                {data && Object.values(data).map((x, key) => (<p > ... {x} ... {key}</p>))}
-                                {Object.values(data)[3]} to tu
+                                {/* {data && Object.values(data).map((x, key) => (<p > ... {x} ... {key}</p>))}
+                                {Object.values(data)[3]} to tu */}
                             </Segment>
                         </Segment>
                 )

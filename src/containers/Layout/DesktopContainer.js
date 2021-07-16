@@ -22,6 +22,7 @@ class DesktopContainer extends Component {
     render() {
         const { children, isAuthenticated } = this.props;
         const { fixed } = this.state;
+
         return (
             <Responsive getWidth={getWidth} minWidth={Responsive.onlyTablet.minWidth}>
                 <Visibility
@@ -59,7 +60,7 @@ class DesktopContainer extends Component {
                                     active={this.props.location.pathname === "/data"}
                                     onClick={() => this.props.history.push("/data")}
                                 >
-                                    Dane
+                                    Data
                                 </Menu.Item>
                                 <Menu.Item
                                     active={this.props.location.pathname === "/forecast"}
@@ -77,10 +78,10 @@ class DesktopContainer extends Component {
                                                 Logout
                                             </Button>
                                             <Button
-                                            style={{
-                                                marginLeft: '5%'
-                                            }}
-                                            
+                                                style={{
+                                                    marginLeft: '5%'
+                                                }}
+
                                                 primary
                                                 inverted
                                                 onClick={() =>
@@ -88,7 +89,7 @@ class DesktopContainer extends Component {
                                                 }
                                             >
                                                 Account
-                                        </Button>
+                                            </Button>
                                         </React.Fragment>
                                     ) : (
                                         <React.Fragment>
@@ -97,7 +98,7 @@ class DesktopContainer extends Component {
                                                 onClick={() => this.props.history.push("/login")}
                                             >
                                                 Login
-                                        </Button>
+                                            </Button>
                                             <Button
                                                 inverted={!fixed}
                                                 primary={fixed}
@@ -105,7 +106,7 @@ class DesktopContainer extends Component {
                                                 onClick={() => this.props.history.push("/signup")}
                                             >
                                                 Signup
-                                        </Button>
+                                            </Button>
                                         </React.Fragment>
                                     )}
                                 </Menu.Item>
