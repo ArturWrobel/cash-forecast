@@ -1,39 +1,61 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
     Container,
     Segment,
 } from "semantic-ui-react";
+import { useHistory } from "react-router-dom";
 import { authAxios } from "../utils";
-import { ForecastAPI } from "../constants";
-import PermissionsContext from '../context/PermissionsContext';
+import { ForecastAPI, PermissionsAPI } from "../constants";
+// import PermissionsContext from '../context/PermissionsContext';
+import Swal from 'sweetalert2'
 
 function Data() {
 
     const [loading, setLoading] = useState(false)
     const [data, setData] = useState({})
+    const [permission, setPermission] = useState('INPUT')
+    let history = useHistory();
 
     const authenticated = localStorage.getItem("token") !== null;
-    const inputOnly = useContext(PermissionsContext)
+    /* const inputOnly = useContext(PermissionsContext)
     console.log(typeof(inputOnly))
-    console.log(Object.entries(inputOnly)[0][1])
+    console.log(Object.entries(inputOnly)[0][1]) */
 
     useEffect(() => {
-        setLoading(true);
-        setData({});
         authAxios
-            .get(ForecastAPI)
+            .get(PermissionsAPI)
             .then(res => {
-                setData(res.data.Inflows);
-                setLoading(false);
-
-                console.log(res.data.Inflows)
-                console.log(typeof (res.data))
-
+                setPermission(res.data.permissions)
+                if (res.data.permissions === 'INPUT') {
+                    Swal.fire({
+                        title: 'Insufficient permissions',
+                        text: 'to run this analysis',
+                        icon: 'error',
+                        confirmButtonText: 'Understood'
+                    }).then(function () {
+                        history.push("/")
+                    })
+                }
             })
             .catch(err => {
                 console.log(err.response)
             });
-    }, [])
+
+        if (permission === "ANALYSIS") {
+            setLoading(true);
+            setData({});
+            authAxios
+                .get(ForecastAPI)
+                .then(res => {
+                    setData(res.data.Inflows);
+                    setLoading(false);
+                })
+                .catch(err => {
+                    console.log(err.response)
+                });
+        }
+
+    },[permission, history])
 
 
     return (
@@ -66,6 +88,8 @@ function Data() {
                             <Segment vertical>
                                 {/* {data && Object.values(data).map((x, key) => (<p > ... {x} ... {key}</p>))}
                                 {Object.values(data)[3]} to tu */}
+                                {!data ?? 'data test'}
+                                {permission === 'INPUT' ? 'Input' : "Diff"}
                             </Segment>
                         </Segment>
                 )

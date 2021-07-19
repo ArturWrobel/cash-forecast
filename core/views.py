@@ -27,11 +27,10 @@ def get_user_from_token(request):
 
 
 '''
+User Attributes:
 auth_token, date_joined, email, emailaddress, first_name, groups, id, is_active,
-is_member, is_staff,is_superuser, last_login, last_name, logentry, 
+is_member, is_staff,is_superuser, last_login, last_name, logentry, permissions,
 password, socialaccount, user_permissions, username
-user_info = User.objects.get(on_free_trial=user.username)
-    print (user_info)
 '''
 
 
@@ -40,12 +39,6 @@ class UserEmailView(APIView):
 
     def get(self, request, *args, **kwargs):
         user = get_user_from_token(request)
-
-        # xxx
-        print(user.date_joined, "date_joined")
-        print(user.permissions, "permissions")
-        # xxx
-
         obj = {"email": user.email}
         return Response(obj)
 
@@ -55,12 +48,6 @@ class PermissionsView(APIView):
 
     def get(self, request, *args, **kwargs):
         user = get_user_from_token(request)
-
-        # xxx
-        print(user.date_joined, "date_joined")
-        print(user.permissions, "permissions")
-        # xxx
-
         obj = {"permissions": user.permissions}
         return Response(obj)
 
@@ -169,14 +156,14 @@ class ForecastAPI(APIView):
 
     def get(self, request):
         df = pd.read_excel('media/bre1607.xlsm',
-                           sheet_name='wyk-for', skiprows=2, usecols='A:B, D')
+        sheet_name='wyk-for', skiprows=2, usecols='A:B, D')
         df = df.set_index('Unnamed: 3')
         # df = df.columns['inflows', 'outflows']
         df = df.rename(
             {'Unnamed: 0': 'Inflows', 'Unnamed: 1': 'Outflows'}, axis='columns')
 
         # df = df.to_json()
-        df = df.head(20).to_json()
+        df = df.head(5).to_json()
         df = json.loads(df)
         print(df)
         return Response(df)

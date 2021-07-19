@@ -16,17 +16,20 @@ const rootReducer = combineReducers({
 });
 
 const store = createStore(rootReducer, composeEnhances(applyMiddleware(thunk)));
+    /*Context Tests only */
+
 const inputOnly = false;
+    /* Tests only */
 
 const app = (
   <Provider store={store}>
     <PermissionsContext.Provider
-    /* Tests only */
+
       value={{
         inputOnly
       }}
     >
-    /* Tests only */
+
       <App />
     </PermissionsContext.Provider>
   </Provider>

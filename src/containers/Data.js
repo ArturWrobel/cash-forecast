@@ -37,11 +37,11 @@ function Data() {
                         height: '50vh',
                     }}
             >
-                <div class="ui icon header">
-                    <i class="unlock alternate icon"></i>
+                <div className="ui icon header">
+                    <i className="unlock alternate icon"></i>
                     Please log in first
                 </div>
-                <div class="inline">
+                <div className="inline">
                 </div>
             </div>) :
                 (
