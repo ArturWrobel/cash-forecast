@@ -68,6 +68,12 @@ class DesktopContainer extends Component {
                                 >
                                     Forecast
                                 </Menu.Item>
+                                <Menu.Item
+                                    active={this.props.location.pathname === "/versions"}
+                                    onClick={() => this.props.history.push("/versions")}
+                                >
+                                    Versions
+                                </Menu.Item>
                                 <Menu.Item position="right">
                                     {isAuthenticated ? (
                                         <React.Fragment>

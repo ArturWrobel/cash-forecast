@@ -7,7 +7,8 @@ from .views import (
     FileUploadView,
     ReadExcell,
     ForecastAPI,
-    PermissionsView
+    PermissionsView,
+    DrillingAPI
 )
 
 app_name = "core"
@@ -21,4 +22,5 @@ urlpatterns = [
     path('data/', ReadExcell.as_view(), name='excel-reader'),
     path('forecast/', ForecastAPI.as_view(), name='forecast'),
     path('permit/', PermissionsView.as_view(), name='permit'),
+    path('version_changes/', DrillingAPI.as_view(), name='versions'),
 ]

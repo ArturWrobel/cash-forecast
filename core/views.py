@@ -156,7 +156,7 @@ class ForecastAPI(APIView):
 
     def get(self, request):
         df = pd.read_excel('media/bre1607.xlsm',
-        sheet_name='wyk-for', skiprows=2, usecols='A:B, D')
+                           sheet_name='wyk-for', skiprows=2, usecols='A:B, D')
         df = df.set_index('Unnamed: 3')
         # df = df.columns['inflows', 'outflows']
         df = df.rename(
@@ -167,3 +167,26 @@ class ForecastAPI(APIView):
         df = json.loads(df)
         print(df)
         return Response(df)
+
+
+class DrillingAPI(APIView):
+    permission_classes = (AllowAny, )
+
+    def get(self, request):
+        df = pd.read_excel('media/drill_by_version.xlsx',
+                           skiprows=1, usecols='B:M')
+        df = df.set_index('Unnamed: 1')[1:]
+        df.index.names = ['Date']
+        New_Labels=['Current', 'D-1', 'D-2',  'D-3',
+       'D-4', 'D-5', 'D-6', 'D-7',
+       'D-8', 'D-9', 'D-10']
+        df.columns = New_Labels
+        """ print(df.info)
+        print(df.columns)
+        print(df.index) """
+        print(df)
+        columns = df.columns
+        index = df.index
+        df = df.to_json()
+        df = json.loads(df)
+        return Response([df, columns, index])

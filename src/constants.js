@@ -19,6 +19,7 @@ export const APIkeyURL = `${APIEndpoint}/api-key/`;
 export const ExcelAPI = `${APIEndpoint}/data/`;
 export const ForecastAPI = `${APIEndpoint}/forecast/`;
 export const PermissionsAPI = `${APIEndpoint}/permit/`;
+export const VersionsAPI = `${APIEndpoint}/version_changes/`;
 
 export const loginURL = `${host}/rest-auth/login/`;
 export const signupURL = `${host}/rest-auth/registration/`;
